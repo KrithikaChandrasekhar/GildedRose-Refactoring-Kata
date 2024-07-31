@@ -49,4 +49,13 @@ class GildedRoseTest {
         assertEquals(80, app.items[0].quality);
     }
 
+    @Test
+    void updateQuality_quantityMax50() {
+        Item[] items = {new Item("Aged Brie", 10, 50)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(9, items[0].sellIn);
+        assertEquals(50, items[0].quality);
+    }
+
 }
