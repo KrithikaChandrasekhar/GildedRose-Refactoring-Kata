@@ -58,4 +58,31 @@ class GildedRoseTest {
         assertEquals(50, items[0].quality);
     }
 
+    @Test
+    void updateQuality_qualityNeverNegative() {
+        Item[] items = {new Item("Normal item", 10, 0)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(9, items[0].sellIn);
+        assertEquals(0, items[0].quality);
+    }
+
+    @Test
+    void updateQuality_sellInBoundaryZero() {
+        Item[] items = {new Item("Normal item", 0, 10)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(-1, items[0].sellIn);
+        assertEquals(8, items[0].quality);
+    }
+
+    @Test
+    void updateQuality_sellInBoundaryNegative() {
+        Item[] items = {new Item("Normal Item", -1, 10)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(-2, items[0].sellIn);
+        assertEquals(8, items[0].quality);
+    }
+
 }
