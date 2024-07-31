@@ -40,4 +40,13 @@ class GildedRoseTest {
         assertEquals(21, app.items[0].quality);
     }
 
+    @Test
+    void updateInventoryOfSulfuras() {
+        Item[] items = { new Item("Sulfuras, Hand of Ragnaros", 10, 80) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(10, app.items[0].sellIn);
+        assertEquals(80, app.items[0].quality);
+    }
+
 }
