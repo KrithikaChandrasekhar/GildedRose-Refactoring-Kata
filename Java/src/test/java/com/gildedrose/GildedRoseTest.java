@@ -14,4 +14,12 @@ class GildedRoseTest {
         assertEquals("foo", app.items[0].name);
     }
 
+    @Test
+    void testNoItems() {
+        Item[] items = new Item[0];
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0,items.length);
+    }
+
 }
